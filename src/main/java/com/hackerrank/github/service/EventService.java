@@ -37,11 +37,12 @@ public class EventService {
 
 
     public ResponseEntity createEvent(Event event) {
-        return eventRepository.findById(event.getId())
-                .map(eventToBeSaved -> {
-                    eventRepository.save(event);
-                    return ResponseEntity.status(HttpStatus.CREATED).build();
-                }).orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+        Optional<Event> optionalEvent = eventRepository.findById(event.getId());
+        if(optionalEvent.isPresent()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        eventRepository.save(event);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     public ResponseEntity<List<Event>> getAllEvents() {
