@@ -1,5 +1,6 @@
 package com.hackerrank.github.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Actor {
     private String avatar;
 
     @OneToMany(mappedBy = "actor")
+    @JsonIgnore
     private List<Event> events;
 
 }

@@ -1,5 +1,6 @@
 package com.hackerrank.github.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class Repo {
     private String url;
 
     @OneToOne(mappedBy = "repo")
+    @JsonIgnore
     private Event event;
 
 }
