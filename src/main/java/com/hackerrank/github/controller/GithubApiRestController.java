@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -45,6 +46,14 @@ public class GithubApiRestController {
     @GetMapping("/actors")
     public ResponseEntity<List<Actor>> getActors(){
         return eventService.getAllActors();
+    }
+
+    /*
+    * TODO: Pending logic
+    * */
+    @GetMapping("/actors/streak")
+    public ResponseEntity<List<Actor>> getActorsStreak(){
+        return ResponseEntity.ok().body(Collections.emptyList());
     }
 
     /*
